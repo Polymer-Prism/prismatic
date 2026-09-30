@@ -1,0 +1,33 @@
+PRISMatic — Evaluation-Only Licence
+
+Copyright (c) 2026 Oana M. Istrate and Peter Nockemann.
+All rights reserved.
+
+1. Permitted use. You may view, download and run PRISMatic (the software,
+   its documentation and its outputs) solely to evaluate it, including as part
+   of the peer review of research proposals and publications. You may cite it
+   and quote short extracts for scholarly discussion, with attribution.
+
+2. Not permitted. Except as stated in section 1, you may not copy, modify,
+   adapt, translate, redistribute, publish, sublicense or sell PRISMatic or any
+   part of it, or incorporate it or any part of it into other software, models,
+   datasets or works, without the prior written permission of the copyright
+   holders.
+
+3. Hosting platforms. Nothing in this licence restricts the rights to view and
+   fork this repository that GitHub's Terms of Service grant to its users. Those
+   rights do not include any permission beyond section 1.
+
+4. No other rights. No licence is granted under any patent, trade mark or other
+   intellectual-property right, whether by implication, estoppel or otherwise.
+
+5. Illustrative content. All parameters, predictions and figures in PRISMatic
+   are illustrative placeholders. They are not measured or validated results and
+   must not be relied on for any technical, commercial or regulatory decision.
+
+6. No warranty. PRISMatic is provided "as is", without warranty of any kind,
+   express or implied. In no event shall the authors and copyright holders be
+   liable for any claim, damages or other liability arising from its use.
+
+Requests for permission: Dr Oana M. Istrate, Queen's University Belfast,
+o.istrate@qub.ac.uk

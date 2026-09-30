@@ -1,0 +1,67 @@
+cff-version: 1.2.0
+message: "If you use or refer to PRISMatic or the PRISM framework, please cite it as below."
+title: "PRISMatic — PRISM WP3 PET recyclability decision demonstrator"
+abstract: >-
+  PRISMatic is the proof-of-concept demonstrator for PRISM (Physics-Informed Recyclability
+  Identification through Spectroscopic and Mechanical Modelling), a physics-informed decision
+  framework that infers the degradation state of unknown-history post-consumer PET
+  from its ATR-FTIR/NIR spectral fingerprint, predicts its mechanical profile, and recommends a
+  mechanical / hybrid / chemical recycling route by weighing technical, chemical and
+  sustainability criteria, with end-use valorisation. All values are illustrative placeholders.
+type: software
+authors:
+  - family-names: Istrate
+    given-names: Oana M.
+    affiliation: "School of Mechanical and Aerospace Engineering, Queen's University Belfast"
+    orcid: "https://orcid.org/0000-0002-6025-3320"
+  - family-names: Nockemann
+    given-names: Peter
+    affiliation: "School of Chemistry and Chemical Engineering, Queen's University Belfast"
+    orcid: "https://orcid.org/0000-0001-9864-9702"
+contact:
+  - family-names: Istrate
+    given-names: Oana M.
+    affiliation: "Queen's University Belfast"
+    email: o.istrate@qub.ac.uk
+version: "1.2.0"
+# Licence: evaluation-only, all rights reserved (see LICENSE). CFF accepts only SPDX
+# identifiers here, so no `license` key is given.
+keywords:
+  - PET recycling
+  - chemical recycling
+  - mechanical recycling
+  - physics-informed neural network
+  - spectroscopy
+  - decision support
+references:
+  - type: article
+    scope: "File format of PRISMatic's optional PolyDAT-compatible export."
+    title: "PolyDAT: A Generic Data Schema for Polymer Characterization"
+    authors:
+      - family-names: Lin
+        given-names: Tzyy-Shyang
+      - family-names: Rebello
+        given-names: Nathan J.
+      - family-names: Beech
+        given-names: Haley K.
+      - family-names: Wang
+        given-names: Zi
+      - family-names: El-Zaatari
+        given-names: Bassil
+      - family-names: Lundberg
+        given-names: David J.
+      - family-names: Johnson
+        given-names: Jeremiah A.
+      - family-names: Kalow
+        given-names: Julia A.
+      - family-names: Craig
+        given-names: Stephen L.
+      - family-names: Olsen
+        given-names: Bradley D.
+    journal: "Journal of Chemical Information and Modeling"
+    year: 2021
+    volume: 61
+    issue: 3
+    start: 1150
+    end: 1163
+    doi: "10.1021/acs.jcim.1c00028"

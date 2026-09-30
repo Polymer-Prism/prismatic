@@ -1,0 +1,6 @@
+# Internal development records — not published
+_internal/
+
+# macOS / editor noise
+.DS_Store
+*.icloud
