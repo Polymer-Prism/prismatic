@@ -1465,6 +1465,11 @@ function svgEl(tag,attrs,txt){
   return e;
 }
 function cssv(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+/* Chart canvas width. Charts scale to their container, so on a phone a 560-unit canvas shrinks its
+   text to ~6px. Phones (≤600px) therefore draw on a narrower 340-unit canvas, which keeps the text
+   legible; wider screens keep the 560-unit layout unchanged. */
+const phoneMQ=(typeof window!=='undefined'&&window.matchMedia)?window.matchMedia('(max-width: 600px)'):null;
+const chartW=()=>(phoneMQ&&phoneMQ.matches)?340:560;
 
 /* End-of-line marker glyphs (redundant, non-colour cue). Centred at (cx,cy). */
 function seriesMarker(shape,cx,cy,col){
@@ -1478,7 +1483,8 @@ function seriesMarker(shape,cx,cy,col){
 /* ---------- degradation chart ---------- */
 function drawDeg(R){
   const svg=el('deg'); if(!svg) return; svg.innerHTML='';
-  const W=560,H=300,mL=42,mR=32,mT=14,mB=34, pw=W-mL-mR, ph=H-mT-mB;
+  const W=chartW(),H=300,mL=42,mR=32,mT=14,mB=34, pw=W-mL-mR, ph=H-mT-mB;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
   const x=n=>mL+(n/PET.cycMax)*pw, y=v=>mT+(1-v/100)*ph;
   // grid + axes
   for(let g=0;g<=100;g+=25){ svg.appendChild(svgEl('line',{x1:mL,y1:y(g),x2:W-mR,y2:y(g),stroke:cssv('--line'),'stroke-width':1}));
@@ -1531,7 +1537,8 @@ function drawLca(R){
     +(gwp?'':' · route decision uses the GWP crossover');
   const ue=el('lca-unit'); if(ue) ue.textContent=unit;
   let vmax=0; for(let n=0;n<=PET.cycMax;n+=0.5) vmax=Math.max(vmax,mech(n),chem(n)); vmax=Math.ceil(vmax*1.15*10)/10;
-  const W=560,H=300,mL=46,mR=34,mT=14,mB=34, pw=W-mL-mR, ph=H-mT-mB;
+  const W=chartW(),H=300,mL=46,mR=34,mT=14,mB=34, pw=W-mL-mR, ph=H-mT-mB;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
   const x=n=>mL+(n/PET.cycMax)*pw, y=v=>mT+(1-v/vmax)*ph;
   const step=vmax/4;
   for(let g=0;g<=vmax+1e-6;g+=step){ svg.appendChild(svgEl('line',{x1:mL,y1:y(g),x2:W-mR,y2:y(g),stroke:cssv('--line'),'stroke-width':1}));
@@ -1735,7 +1742,8 @@ function initCharts(){
 /* ---------- transition axis (signature) ---------- */
 function drawAxis(R){
   const svg=el('axis'); if(!svg) return; svg.innerHTML='';
-  const W=560,mL=20,mR=20,pw=W-mL-mR, ay=96, barH=16;
+  const W=chartW(),mL=20,mR=20,pw=W-mL-mR, ay=96, barH=16;
+  svg.setAttribute('viewBox','0 0 '+W+' 150');
   const x=n=>mL+(n/PET.cycMax)*pw;
   // route zones from score boundaries
   const b=R.bounds;
@@ -1778,7 +1786,8 @@ function drawAxis(R){
    The visible #sens-note text carries the same conclusion for non-visual users. */
 function drawSensitivity(R){
   const svg=el('sens'); if(!svg) return; svg.innerHTML='';
-  const W=560,mL=20,mR=20,pw=W-mL-mR, y0=12,bh=12;
+  const W=chartW(),mL=20,mR=20,pw=W-mL-mR, y0=12,bh=12;
+  svg.setAttribute('viewBox','0 0 '+W+' 46');
   const x=f=>mL+f*pw;
   const n=R.inf.n, W0=R.W;
   const rest=W0.t+W0.c;
@@ -2027,7 +2036,8 @@ function drawStressStrain(R){
   const M=mvMech(R);
   const n=R.inf.n;
   // fixed axes: virgin headroom (matches drawDeg margin idiom), state-independent so samples stay comparable
-  const W=560,H=300,mL=48,mR=20,mT=16,mB=40, pw=W-mL-mR, ph=H-mT-mB;
+  const W=chartW(),H=300,mL=48,mR=20,mT=16,mB=40, pw=W-mL-mR, ph=H-mT-mB;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
   const strainMax=V.eb*1.05;                 // fixed x span (virgin EB headroom)
   // y span ~V.ts*1.1, but never below the virgin yield peak (yield-drop makes yield > drawn UTS) + headroom
   const virginYieldPeak=(MECH0 && MECH0.yieldStress && MECH0.yieldStress.value)||V.ts;
@@ -2207,7 +2217,8 @@ function drawLibrary(R){
 
   const M=mvMech(R);
   const n=R.inf.n, dn=R.inf.dn;
-  const W=560,H=260,mL=48,mR=20,mT=18,mB=40, pw=W-mL-mR, ph=H-mT-mB;
+  const W=chartW(),H=260,mL=48,mR=20,mT=18,mB=40, pw=W-mL-mR, ph=H-mT-mB;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
   const uts0=(MECH0 && MECH0.uts && MECH0.uts.value)||V.ts||1;
 
   // axis domains: x = carbonyl index; y = UTS retention (% of virgin)
@@ -3033,6 +3044,9 @@ applyHash();   // restore shared state from the URL hash, if one was provided
 render();
 window.addEventListener('hashchange',()=>{ if(applyHash()) render(); });
 window.addEventListener('resize',markScrollingFlows);
+// redraw the charts when the screen crosses the phone breakpoint (e.g. rotating a phone)
+if(phoneMQ){ if(phoneMQ.addEventListener) phoneMQ.addEventListener('change',render);
+             else if(phoneMQ.addListener) phoneMQ.addListener(render); }
 // optional chart interactions and panel features (guarded)
 if (typeof initCharts === 'function') initCharts();
 if (typeof initFeatures === 'function') initFeatures();
