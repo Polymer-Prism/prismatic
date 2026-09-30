@@ -1,5 +1,7 @@
 # PRISMatic
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23065180.svg)](https://doi.org/10.5281/zenodo.23065180)
+
 **A decision demonstrator for recycling post-consumer PET of unknown history.**
 
 PRISMatic is the proof-of-concept demonstrator for **PRISM** (Physics-Informed Recyclability
@@ -99,6 +101,9 @@ JSON and image snapshot agree for mechanical, hybrid and chemical cases.
 
 Please cite PRISMatic using the metadata in [`CITATION.cff`](CITATION.cff) (GitHub's **Cite this
 repository** button formats it for you).
+
+- **All versions** (resolves to the latest): [10.5281/zenodo.23065180](https://doi.org/10.5281/zenodo.23065180)
+- **Version 1.2.0** (this exact release): [10.5281/zenodo.23065181](https://doi.org/10.5281/zenodo.23065181)
 
 ## Licence
 

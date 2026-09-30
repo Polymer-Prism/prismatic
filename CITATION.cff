@@ -24,6 +24,15 @@ contact:
     affiliation: "Queen's University Belfast"
     email: o.istrate@qub.ac.uk
 version: "1.2.0"
+date-released: "2026-09-30"
+doi: "10.5281/zenodo.23065180"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23065180"
+    description: "Concept DOI: all versions, resolves to the latest"
+  - type: doi
+    value: "10.5281/zenodo.23065181"
+    description: "Version DOI for release 1.2.0"
 repository-code: "https://github.com/Polymer-Prism/prismatic"
 url: "https://polymer-prism.github.io/prismatic/"
 # Licence: evaluation-only, all rights reserved (see LICENSE). CFF accepts only SPDX
