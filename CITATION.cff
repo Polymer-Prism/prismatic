@@ -24,6 +24,8 @@ contact:
     affiliation: "Queen's University Belfast"
     email: o.istrate@qub.ac.uk
 version: "1.2.0"
+repository-code: "https://github.com/Polymer-Prism/prismatic"
+url: "https://polymer-prism.github.io/prismatic/"
 # Licence: evaluation-only, all rights reserved (see LICENSE). CFF accepts only SPDX
 # identifiers here, so no `license` key is given.
 keywords:

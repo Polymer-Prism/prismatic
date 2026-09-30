@@ -17,7 +17,9 @@ Developed by **Oana Istrate** and **Peter Nockemann**, Queen's University Belfas
 
 ## Try it
 
-Download [`prismatic.html`](prismatic.html) and open it in any modern browser. It is a single,
+**Open it online: <https://polymer-prism.github.io/prismatic/>**
+
+Or download [`prismatic.html`](prismatic.html) and open it in any modern browser. It is a single,
 self-contained file: no installation, no network connection, no external libraries.
 
 Then:
